@@ -17,7 +17,8 @@ In this lab, we are going to write a Python program with Ryu SDN framework to bu
 ## Execution
 
 > * How to run your program?  
-   輸入指令：mn --custom topo.py --topo topo --link tc --controller remote //Run topo.py  
+   輸入指令：mn --custom topo.py --topo topo --link tc --controller remote   
+   //Run topo.py  
    在另一個終端機輸入指令：ryu-manager controller.py –-observe-links  
    //Run controller.py  
    
@@ -28,7 +29,7 @@ In this lab, we are going to write a Python program with Ryu SDN framework to bu
    //ex.mn --link tc,bw=10,delay=10ms  
    --controller remote 遠端接上 OpenFlow Controller  
    
-> * Show the screenshot of using iPerf command in Mininet (both `SimpleController.py` and `controller.py`)
+> * Show the screenshot of using iPerf command in Mininet (both `SimpleController.py` and `controller.py`)  
    For SimpleController.py :  
    ![image](https://github.com/nctucn/lab3-qhorse0616227/blob/master/SimpleController_iPerf.png)  
    For controller.py :
@@ -41,7 +42,8 @@ In this lab, we are going to write a Python program with Ryu SDN framework to bu
 
 1. Environment Setup  
    先進入自己的container `ssh –p 16227 root@140.113.195.69`    
-   然後把需要的資料clone到自己的repository `git clone https://github.com/nctucn/lab3-qhorse0616227.git Route_Configuration`  
+   然後把需要的資料clone到自己的repository   
+   `git clone https://github.com/nctucn/lab3-qhorse0616227.git Route_Configuration`  
 
 2. Example of Ryu SDN  
    先把位置cd到src/裡  
