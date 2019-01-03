@@ -38,18 +38,36 @@ In this lab, we are going to write a Python program with Ryu SDN framework to bu
 
 ### Tasks
 
-> TODO:
-> * Describe how you finish this work in detail
 
-1. Environment Setup
+1. Environment Setup  
+   先進入自己的container `ssh –p 16227 root@140.113.195.69`    
+   然後把需要的資料clone到自己的repository `git clone https://github.com/nctucn/lab3-qhorse0616227.git Route_Configuration`  
 
-2. Example of Ryu SDN
+2. Example of Ryu SDN  
+   先把位置cd到src/裡  
+   然後用Mininet來執行SimpleTopo.py   
+   `mn --custom SimpleTopo.py --topo topo --link tc --controller remote`  
+   再打開另一個終端機一樣cd到src/裡  
+   然後用Ryu manager來跑SimpleController.py  
+   `ryu-manager SimpleController.py --observe-links`  
+   跑出結果後先關掉mininet那個視窗（輸入exit）  
+   然後再關掉SimpleController.py（先按 Ctrl-Z 再輸入 mn -c）  
+   
+3. Mininet Topology  
+   先將SimpleTopo.py複製到topo.py `cp SimpleTopo.py topo.py`  
+   然後依照topo.png的圖修改topo.py的code  
+   最後依照Task 2的步驟執行topo.py和SimpleController.py  
 
-3. Mininet Topology
-
-4. Ryu Controller
+4. Ryu Controller  
+   先將SimpleController.py複製到controller.py `cp SimpleController.py controller.py`   
+   然後依照投影片上的圖修改controller.py的code  
+   
 
 5. Measurement
+   依照Task 2的步驟執行topo.py和SimpleController.py  
+   然後用iPerf檢測loss的比例  
+   再依照Task 2的步驟執行topo.py和controller.py  
+   一樣用iPerf檢測loss的比例
 
 ### Discussion
 
@@ -61,25 +79,28 @@ In this lab, we are going to write a Python program with Ryu SDN framework to bu
 2. What is “table-miss” in SDN?  
    一個packet在一個Flow Table裡沒有發現相對應的Flow Entry  
 
-3. Why is "`(app_manager.RyuApp)`" adding after the declaration of class in `controller.py`?
+3. Why is "`(app_manager.RyuApp)`" adding after the declaration of class in `controller.py`?  
+   因為class才能繼承app_manager.RyuApp  
    
 4. Explain the following code in `controller.py`.
     ```python
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
     ```
    透過 set_ev_cls 裝飾器，依接收到的參數（事件類別、Switch與Controller之間的溝通狀況），而進行反應。  
-   若以此圖為例，所代表的意思是負責 Packet-in 事件並Switch和Controller交握完畢的狀態  
+   若以此圖為例，所代表的意思是負責 Packet-in 事件並且是Switch和Controller交握完畢的狀態  
    > * CONFIG_DISPATCHER：接收 SwitchFeatures  
    > * MAIN_DISPATCHER：一般狀態（交握完畢）  
    > * DEAD_DISPATCHER：連線中斷 //在此沒有用到  
    > * HANDSHAKE_DISPATCHER：交換 HELLO 訊息 //在此沒有用到  
    
-5. What is the meaning of “datapath” in `controller.py`?
+5. What is the meaning of “datapath” in `controller.py`?  
+   the switch in the topology using OpenFlow
    
-6. Why need to set "`ip_proto=17`" in the flow entry?
+6. Why need to set "`ip_proto=17`" in the flow entry?  
+   使用UDP協定
    
 7. Compare the differences between the iPerf results of `SimpleController.py` and `controller.py` in detail.  
-   controller.py 接收到的ACK比例比 SimpleController.py 還高  
+   controller.py loss的比例比 SimpleController.py 還低  
    
 8. Which forwarding rule is better? Why?  
    controller.py 較好
@@ -113,10 +134,7 @@ In this lab, we are going to write a Python program with Ryu SDN framework to bu
 ---
 ## Contributors
 
-> TODO:
-> * Please replace "`YOUR_NAME`" and "`YOUR_GITHUB_LINK`" into yours
-
-* [YOUR_NAME](YOUR_GITHUB_LINK)
+* [Ting-yu Chen](https://github.com/qhorse0616227)
 * [David Lu](https://github.com/yungshenglu)
 
 ---
