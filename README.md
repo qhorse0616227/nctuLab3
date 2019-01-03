@@ -17,7 +17,7 @@ In this lab, we are going to write a Python program with Ryu SDN framework to bu
 ## Execution
 
 > * How to run your program?  
-   輸入指令：mn --custom topo.py --topo topo --link tc --controller remote //Run topo.py
+   輸入指令：mn --custom topo.py --topo topo --link tc --controller remote //Run topo.py  
    在另一個終端機輸入指令：ryu-manager controller.py –-observe-links  
    //Run controller.py  
    
@@ -63,7 +63,7 @@ In this lab, we are going to write a Python program with Ryu SDN framework to bu
    然後依照投影片上的圖修改controller.py的code  
    
 
-5. Measurement
+5. Measurement  
    依照Task 2的步驟執行topo.py和SimpleController.py  
    然後用iPerf檢測loss的比例  
    再依照Task 2的步驟執行topo.py和controller.py  
